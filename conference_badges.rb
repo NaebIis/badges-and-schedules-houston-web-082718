@@ -1,32 +1,30 @@
-def badge_maker(name)
-  name = name
-  return "Hello, my name is #{name}."
-end
+katz_deli = [] 
 
-def batch_badge_creator(array)
-  newArray = []
-  array.each do |name|
-    newArray.push("Hello, my name is #{name}.")
-  end
-  return newArray
-end
-
-def assign_rooms(array)
-  newArray =[]
-  counter = 1
-  array.each do |name|
-    newArray.push("Hello, #{name}! You'll be assigned to room #{counter}!")
-    counter += 1
-  end
-  return newArray
-end
-
-def printer(array)
-  batch_badge_creator(array).each do |id|
-    puts id
-  end 
-  
-  assign_rooms(array).each do |id|
-    puts id 
-  end
+def take_a_number(array, name)
+  array.push(name)
+  position = array.index(name)
+  puts "Welcome, #{name}. You are number #{array.index(name)+1} in line."
+  return name, position 
 end 
+
+def line(array) 
+  if array.length == 0 
+    puts "The line is currently empty."
+  else 
+    message = "The line is currently:"
+    
+  array.each_with_index do |value, index| 
+    message += " #{index.to_i+1}. #{value}"
+  end 
+  puts "#{message}"
+  end 
+end 
+
+def now_serving(array)
+  if array.empty? == true 
+    puts "There is nobody waiting to be served!"
+  elsif array.empty? == false 
+    puts "Currently serving #{array.shift}."
+  end 
+end 
+
